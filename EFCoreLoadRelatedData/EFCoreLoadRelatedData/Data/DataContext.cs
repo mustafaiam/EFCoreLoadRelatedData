@@ -9,6 +9,9 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Comic>().Navigation(c => c.Teams).AutoInclude();
+            modelBuilder.Entity<Team>().Navigation(t => t.SuperHeroes).AutoInclude();
+
             modelBuilder.Entity<Comic>().HasData(
                 new Comic { Id = 1, Name = "Marvel" },
                 new Comic { Id = 2, Name = "DC"});
